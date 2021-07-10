@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import javax.swing.JButton;
@@ -12,16 +7,13 @@ import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Eka Pryhananto
- */
+
 public class RiwayatPerjalanan extends JFrame{
     JFrame frame = new JFrame("JDBC");
     public JTable tabel;
     DefaultTableModel model;
     JScrollPane scrollPane;
-    public Object kolom[] = {"NIK", "Nama", "Alamat", "Telfon", "asal", "tujuan", "kelas", "tanggal", "Harga"};
+    public Object kolom[] = {"NIK", "Nama", "Alamat", "NoTelfon", "asal", "tujuan", "kelas", "tanggal", "Harga"};
     public JButton bKembali = new JButton("Kembali");
     
     public RiwayatPerjalanan(){
@@ -45,4 +37,6 @@ public class RiwayatPerjalanan extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
     }
+    
+    
 }

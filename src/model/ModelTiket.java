@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
-
 
 import control.ControlTiket;
 import java.awt.HeadlessException;
@@ -14,13 +8,11 @@ import koneksi.Koneksi;
 import view.InputData;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import view.CetakTiket;
 import view.EditData;
 import view.RiwayatPerjalanan;
 
-/**
- *
- * @author Eka Pryhananto
- */
+
 public class ModelTiket implements ITiket{
     
     Koneksi koneksi = new Koneksi();
@@ -38,7 +30,7 @@ public class ModelTiket implements ITiket{
                 data[jumlah][0] = resultSet.getString("NIK"); 
                 data[jumlah][1] = resultSet.getString("Nama");                
                 data[jumlah][2] = resultSet.getString("Alamat");
-                data[jumlah][3] = resultSet.getString("Telfon");
+                data[jumlah][3] = resultSet.getString("NoTelfon");
                 data[jumlah][4] = resultSet.getString("asal");
                 data[jumlah][5] = resultSet.getString("tujuan");
                 data[jumlah][6] = resultSet.getString("kelas");
@@ -83,14 +75,14 @@ public class ModelTiket implements ITiket{
             koneksi.statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage()); // untuk notif eror tidak bisa masuk ke database
         }
     }
 
     @Override
     public void edit(String nik, String nama, String alamat, String notelp, String asal, String tujuan, String kelas, String tanggal, String harga) {
         try {
-            String sql = "UPDATE penumpang SET NIK='"+nik+"', Nama='"+nama+"', Alamat='"+alamat+"', Telfon='"+notelp+"', asal='"+asal+"', tujuan='"+tujuan+"', kelas='"+kelas+"', tanggal='"+tanggal+"', harga='"+harga+"' WHERE Nik='"+nik+"';";
+            String sql = "UPDATE penumpang SET NIK='"+nik+"', Nama='"+nama+"', Alamat='"+alamat+"', NoTelfon='"+notelp+"', asal='"+asal+"', tujuan='"+tujuan+"', kelas='"+kelas+"', tanggal='"+tanggal+"', harga='"+harga+"' WHERE NIK='"+nik+"';";
             koneksi.statement = koneksi.koneksi.createStatement();
             koneksi.statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Berhasil diupdate");

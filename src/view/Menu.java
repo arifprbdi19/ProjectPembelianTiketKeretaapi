@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import control.ControlTiket;
@@ -14,10 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import model.ModelTiket;
 
-/**
- *
- * @author Eka Pryhananto
- */
+
 public class Menu extends JFrame implements ActionListener{
     JLabel lJudul = new JLabel(" PEMESANAN TIKET KERETA API");
     JLabel lPesan = new JLabel("Pesan Tiket");
@@ -37,13 +29,13 @@ public class Menu extends JFrame implements ActionListener{
         add(btnRiwayat);
 
         lJudul.setFont(new java.awt.Font("Couture", 5, 24));
-        lJudul.setForeground(new Color(255, 204, 153));
+        lJudul.setForeground(new Color(5, 204, 153));
         
         lPesan.setFont(new java.awt.Font("Futura Bk Bt", 2, 12));
         lRiwayat.setFont(new java.awt.Font("Futura Bk Bt", 2, 12));
 	lJudul.setBounds(100,2,400,40);
-	lPesan.setBounds(100,150,120,20);
-        lRiwayat.setBounds(300,150,150,20);
+	lPesan.setBounds(150,150,120,20);
+        lRiwayat.setBounds(340,150,150,20);
 	btnPesan.setBounds(100,100,180,50);
         btnRiwayat.setBounds(300,100,180,50);
         
@@ -53,12 +45,7 @@ public class Menu extends JFrame implements ActionListener{
       	setVisible(true);
         setLocationRelativeTo(null);
         
-//        btnRiwayat.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                RiwayatPerjalanan rp = new RiwayatPerjalanan();
-//            }
-//        });
+
     }
 
     @Override
@@ -71,6 +58,7 @@ public class Menu extends JFrame implements ActionListener{
             ed.dispose();
             InputData id = new InputData();
             id.dispose();
+
             ControlTiket ct = new ControlTiket(mt, ed, id, rp);
                 
         }
@@ -82,7 +70,7 @@ public class Menu extends JFrame implements ActionListener{
             EditData ed = new EditData();
             ed.dispose();
             InputData id = new InputData();
-            ControlTiket ct = new ControlTiket(mt, ed, id, rp);
+         ControlTiket ct = new ControlTiket(mt, ed, id, rp);
         }
     }
 }

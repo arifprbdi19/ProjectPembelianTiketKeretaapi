@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
 import java.awt.event.ActionEvent;
@@ -12,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import koneksi.Koneksi;
 import model.ITiket;
 import model.ModelTiket;
 import view.EditData;
@@ -20,16 +16,14 @@ import view.Menu;
 import view.RiwayatPerjalanan;
 import view.CetakTiket;
 
-/**
- *
- * @author Eka Pryhananto
- */
+
 public class ControlTiket {
     ModelTiket model;
     EditData edit;
     InputData input;
     RiwayatPerjalanan rp;
     ITiket iTiket;
+    CetakTiket cetak;
     
     public ControlTiket(ModelTiket modell, EditData editt, InputData inputt, RiwayatPerjalanan rpe){
         this.model = modell;
@@ -41,6 +35,7 @@ public class ControlTiket {
         if (model.getBanyakData() != 0) {
             String dataPenumpang[][] = model.readPenumpang();
             rp.tabel.setModel((new JTable(dataPenumpang, rp.kolom)).getModel());
+
         }else {
             JOptionPane.showMessageDialog(null, "Data Tidak Ada");
         }
@@ -112,7 +107,7 @@ public class ControlTiket {
                 ModelTiket mt = new ModelTiket();
                 InputData id = new InputData();
                 id.dispose();
-                ControlTiket ct = new ControlTiket(mt, ed, id, rp);  
+                ControlTiket ct = new ControlTiket(mt, ed, id, rp);
             }
         });
         
@@ -133,12 +128,57 @@ public class ControlTiket {
             }
         });
         
+        edit.bCetak.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+             
+             CetakTiket cetak = new CetakTiket();
+            }
+        });
+        
         edit.bHapus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 String nik = edit.getNik();
                 model.hapus(nik);
                 edit.dispose();
+            }
+        });
+        
+        edit.bCetak.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String nik = edit.getNik();
+                String nama = edit.getNama();
+                String alamat = edit.getAlamat();
+                String notlp = edit.getNotlp();
+                String asal = edit.getAsal();
+                String tujuan = edit.getTujuan();
+                String kelas = edit.getKelas();
+                String tanggal = edit.getTanggal();
+                String harga = edit.getHarga();
+                edit.dispose();
+                CetakTiket cti = new CetakTiket();
+                
+                cti.tNik.setText(nik);
+                cti.tNama.setText(nama);
+                cti.tAlamat.setText(alamat);
+                cti.tNotlp.setText(notlp);
+                cti.tasal.setText(asal);
+                cti.ttujuan.setText(tujuan);
+                cti.tkelas.setText(kelas);
+                cti.ttanggal.setText(tanggal);
+                cti.tharga.setText(harga);
+
+                RiwayatPerjalanan rp = new RiwayatPerjalanan();
+                rp.dispose();
+                ModelTiket mt = new ModelTiket();
+                InputData id = new InputData();
+                id.dispose();
+                EditData ed = new EditData();
+                ed.dispose();
+                ControlTiket ct = new ControlTiket(mt, ed, id, rp);
+                
             }
         });
     }

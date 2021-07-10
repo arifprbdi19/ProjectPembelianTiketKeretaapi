@@ -1,109 +1,88 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*; 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JPanel;
+import javax.swing.*;
 import koneksi.Koneksi;
-/**
- *
- * @author lenovo
- */
+
+
 public class CetakTiket extends JFrame{
-//   JLabel kelas;
-    JLabel lJudul = new JLabel("Edit Data");
-    JLabel lNik = new JLabel("NIK");
-    public JTextField tNik = new JTextField(30);
-    JLabel lNama = new JLabel("Nama");
-    public JTextField tNama = new JTextField(30);
-    JLabel lAlamat = new JLabel("Alamat");
-    public JTextField tAlamat = new JTextField(30);
-    JLabel lNotlp = new JLabel("NoTlp");
-    public JTextField tNotlp = new JTextField(30);
-    JLabel lasal = new JLabel("Asal");
-    public JTextField tasal = new JTextField(30);
-    JLabel ltujuan = new JLabel("Tujuan");
-    public JTextField ttujuan = new JTextField(30);
-    JLabel lkelas = new JLabel("Kelas");
-    public JTextField tkelas = new JTextField(30);
-    JLabel ltanggal = new JLabel("Tanggal");
-    public JTextField ttanggal = new JTextField(30);
-    JLabel lharga = new JLabel("Harga");
-    public JTextField tharga = new JTextField(30);
+    JLabel lJudul = new JLabel("BUKTI CETAK");
+    JLabel lNik = new JLabel ("NIK                 :");
+    public JLabel tNik = new JLabel("");
+    JLabel lNama = new JLabel("Nama             :");
+    public JLabel tNama = new JLabel("");
+    JLabel lAlamat = new JLabel("Alamat         :");
+    public JLabel tAlamat = new JLabel("");
+    JLabel lNotlp = new JLabel("NoTlp           :");
+    public JLabel tNotlp = new JLabel(" ");
+    JLabel lasal = new JLabel("Asal             :");
+    public JLabel tasal = new JLabel("");
+    JLabel ltujuan = new JLabel("Tujuan         :");
+    public JLabel ttujuan = new JLabel("");
+    JLabel lkelas = new JLabel("Kelas           :");
+    public JLabel tkelas = new JLabel("");
+    JLabel ltanggal = new JLabel("Tanggal       :");
+    public JLabel ttanggal = new JLabel("");
+    JLabel lharga = new JLabel("Harga           :");
+    public JLabel tharga = new JLabel("");
+    
+    public JButton bKembali = new JButton("Kembali");
+
+    Koneksi koneksi = new Koneksi ();
+    EditData cetakTiket = new EditData ();
    
-  String DBurl = "jdbc:mysql://localhost/kereta";
-  String DBusername = "root";
-  String DBpassword = "";  
-  Connection koneksi;
-  Statement statement;
-  ResultSet rs;
-  String sql;
-  //String ID;
- 
-   public CetakTiket() {
-	setTitle("Pembelian Tiket Pesawat");
-	setDefaultCloseOperation(3);
-        
-        lNik = new JLabel ("");
-        lNama = new JLabel ("");
-        lAlamat = new JLabel ("");
-        lNotlp = new JLabel ("");
-        lasal = new JLabel ("");
-        ltujuan = new JLabel ("");
-        lkelas = new JLabel ("");
-        ltanggal = new JLabel ("");
-        lharga = new JLabel ("");
-	setSize(750,300);            
-        
-	setLayout(null);
+    
+    public CetakTiket() {
+       setTitle("BUKTI CETAK");
+        setSize(400,400);
+        setLayout(null);
+        add(lJudul);
         add(lNik);
+        add(tNik);
         add(lNama);
+        add(tNama);
         add(lAlamat);
-	add(lNama);
-	add(lNotlp);
+        add(tAlamat);
+        add(lNotlp);
+        add(tNotlp);
         add(lasal);
-	add(ltujuan);
+        add(tasal);
+        add(ltujuan);
+        add(ttujuan);
         add(lkelas);
-	add(lharga);
+        add(tkelas);
         add(ltanggal);
-
-        ltujuan.setFont(new java.awt.Font("Couture", Font.ITALIC, 12));
-        lasal.setFont(new java.awt.Font("Couture", Font.ITALIC, 12));
-
-        ltujuan.setForeground(Color.orange);
-        lasal.setForeground(Color.orange);
-
-        lNik.setBounds(310,50,100,20);
-        lNik.setBounds(380,50,200,20);
-        lNama.setBounds(310,70,100,20);
-        lNama.setBounds(380,70,200,20);
-        lAlamat.setBounds(310,90,100,20);
-        lAlamat.setBounds(380,90,200,20);
-        lNotlp.setBounds(310,110,100,20);
-        lNotlp.setBounds(380,130,200,20);
+        add(ttanggal);
+        add(lharga);
+        add(tharga);
+        add(bKembali);
+       
+        lJudul.setBounds(150, 5, 150, 20);
+        lNik.setBounds(130, 30, 150, 20);
+        tNik.setBounds(210, 30, 150, 20);
+        lNama.setBounds(130, 50, 150, 20);
+        tNama.setBounds(210, 50, 150, 20);
+        lAlamat.setBounds(130, 70, 150, 20);
+        tAlamat.setBounds(210, 70, 150, 20);
+        lNotlp.setBounds(130, 90, 150, 20);
+        tNotlp.setBounds(210, 90, 150, 20);
+        lasal.setBounds(130, 120, 150, 20);
+        tasal.setBounds(210, 120, 150, 20);
+        ltujuan.setBounds(130, 150, 150, 20);
+        ttujuan.setBounds(210, 150, 150, 20);
+        lkelas.setBounds(130, 180, 150, 20);
+        tkelas.setBounds(210, 180, 150, 20);
+        ltanggal.setBounds(130, 210, 150, 20);
+        ttanggal.setBounds(210, 210, 150, 20);
+        lharga.setBounds(130, 240, 150, 20);
+        tharga.setBounds(210, 240, 150, 20);
         
-        ltanggal.setBounds(70,190,100,20);
-	ltanggal.setBounds(70,210,100,20);
-        lharga.setBounds(580,190,100,20);
-        lharga.setBounds(580,210,100,20);
-	ltujuan.setBounds(510,210,100,20);
-        lasal.setBounds(140,55,100,20);
-	lasal.setBounds(140,70,100,20);
-        ltujuan.setBounds(140,130,100,20);
-
-   }
+        bKembali.setBounds(120, 280, 120, 30);
+  
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);  
+        setLocationRelativeTo(null);
+    }
 }
