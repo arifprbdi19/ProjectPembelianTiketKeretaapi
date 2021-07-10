@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import koneksi.Koneksi;
 import view.InputData;
 
-/**
- *
- * @author Eka Pryhananto
- */
+
 public interface ITiket {   
     public String[][] readPenumpang();
     public int getBanyakData();
